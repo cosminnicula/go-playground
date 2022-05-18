@@ -12,12 +12,26 @@ func main() {
 	hand.print()
 	remainingCards.print()
 
+	fmt.Println("***")
+
 	// type conversion
 	greeting := "hi there"
 	fmt.Println([]byte(greeting))
+
+	fmt.Println("***")
 
 	// toString
 	fmt.Println(cards.toString())
 
 	cards.saveToFile("cards.txt")
+
+	fmt.Println("***")
+
+	cardsFromFile := newDeckFromFile("cards.txt")
+	fmt.Println(cardsFromFile.toString())
+
+	fmt.Println("***")
+
+	cardsFromFile.shuffle()
+	fmt.Println(cardsFromFile.toString())
 }
