@@ -1,8 +1,23 @@
 package main
 
+import "fmt"
+
 // go run main.go deck.go
 func main() {
-	cards := deck{"ace of diamonds", "five of spades"}
+	cards := newDeck()
 
-	cards.print()
+	// cards.print()
+
+	hand, remainingCards := deal(cards, 5)
+	hand.print()
+	remainingCards.print()
+
+	// type conversion
+	greeting := "hi there"
+	fmt.Println([]byte(greeting))
+
+	// toString
+	fmt.Println(cards.toString())
+
+	cards.saveToFile("cards.txt")
 }
