@@ -25,7 +25,7 @@ func main() {
 	// buf.ReadFrom(resp.Body)
 	// fmt.Println(string(buf.String()))
 
-	// io.Copy(os.Stdout, resp.Body)
+	// io.Copy(os.Stdout, resp.Body)w
 
 	mw := myWriter{}
 	io.Copy(mw, resp.Body)
