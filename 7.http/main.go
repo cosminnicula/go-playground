@@ -7,6 +7,8 @@ import (
 	"os"
 )
 
+type myWriter struct{}
+
 func main() {
 	resp, err := http.Get("https://google.com")
 
@@ -15,13 +17,24 @@ func main() {
 		os.Exit(1)
 	}
 
-	bs := make([]byte, 99999)
-	resp.Body.Read(bs)
-	fmt.Println(string(bs))
+	// bs := make([]byte, 99999)
+	// resp.Body.Read(bs)
+	// fmt.Println(string(bs))
 
 	// buf := new(bytes.Buffer)
 	// buf.ReadFrom(resp.Body)
 	// fmt.Println(string(buf.String()))
 
-	io.Copy(os.Stdout, resp.Body)
+	// io.Copy(os.Stdout, resp.Body)
+
+	mw := myWriter{}
+	io.Copy(mw, resp.Body)
+}
+
+func (myWriter) Write(p []byte) (int, error) {
+	fmt.Println("---custom writer---")
+	fmt.Println(string(p))
+	fmt.Println("---custom writer---")
+
+	return len(p), nil
 }
