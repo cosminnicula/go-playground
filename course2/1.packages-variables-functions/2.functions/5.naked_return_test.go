@@ -5,9 +5,12 @@ import (
 	"testing"
 )
 
-func Multiple(t *testing.T) {
-	upperCase := func(s string) (string, int) {
-		return strings.ToUpper(s), len(s)
+func TestNakedReturn(t *testing.T) {
+	upperCase := func(s string) (upperCaseString string, stringLength int) {
+		upperCaseString = strings.ToUpper(s)
+		stringLength = len(s)
+
+		return // naked return
 	}
 
 	actual_s, actual_len := upperCase("hello")
