@@ -4,3 +4,4 @@ package main
 // false for the boolean type, and
 // "" (the empty string) for strings.
 // nil for pointers
+// nil for slices
